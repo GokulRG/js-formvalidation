@@ -3,6 +3,7 @@ document.getElementById('name').addEventListener('blur', validateName);
 document.getElementById('zip').addEventListener('blur', validateZip);
 document.getElementById('email').addEventListener('blur', validateEmail);
 document.getElementById('phone').addEventListener('blur', validatePhone);
+document.getElementById('submit').addEventListener('click', onSubmitClick);
 
 function validateName() {
     const name = document.getElementById('name');
@@ -48,5 +49,20 @@ function validatePhone() {
         phone.classList.add('is-invalid');
     } else {
         phone.classList.remove('is-invalid');
+    }
+}
+
+function onSubmitClick() {
+    event.preventDefault();
+    const elements = document.getElementsByClassName('is-invalid');
+    const name = document.getElementById('name').value;
+    const zip = document.getElementById('zip').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    if (elements.length > 0 || !name || !zip || !email || !phone) {
+        window.alert('You have errors in your form!');
+    } else {
+        window.alert('You\'re good to go!');
     }
 }
